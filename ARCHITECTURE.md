@@ -54,17 +54,25 @@ flowchart TD
         AG["action_generator.py\n1× Groq call → 5-8 actions"]
     end
 
-    subgraph P06["Phase 06 — Email Draft & Send 🤖"]
-        ED["email_drafter.py\n1× Groq call → exec summary"]
-        SMTP["smtplib STARTTLS\nGmail SMTP"]
+    subgraph P06["Phase 06 — Executive Insights 🤖"]
+        INS["executive_insights.py\n1× Groq call → Curated Top 3"]
     end
 
-    RAW[("data/{run}/01-raw/\nreviews_raw.json")]
-    CLEAN[("data/{run}/02-clean/\nreviews_clean.json\nreviews_clean.csv")]
-    THEMES[("data/{run}/03-themes/\nthemes.json")]
-    PULSE[("data/{run}/04-pulse/\npulse.json")]
-    ACTIONS[("data/{run}/05-actions/\nactions.json")]
-    EMAIL[("data/{run}/06-email/\nemail_draft.html\nsend_receipt.json")]
+    subgraph P07["Phase 07 — PDF Generation"]
+        PDFG["pdf_generator.py\nHigh-fidelity fpdf2 one-pager"]
+    end
+
+    subgraph P08["Phase 08 — Email Dispatch"]
+        SEND["email_sender.py\nSMTP + Attachments (PDF/HTML)"]
+    end
+
+    subgraph P09["Phase 09 — Storage"]
+        STOR["history_archiver.py\nRegistry update"]
+    end
+
+    INSIGHTS[("data/{run}/06-insights/\ninsights.json")]
+    PDF[("data/{run}/07-pdf-report/\nPulse_Report.pdf")]
+    EMAIL[("data/{run}/08-email/\nsend_receipt.json")]
 
     INBOX["📧 sruthisv1998@gmail.com"]
 
@@ -91,13 +99,22 @@ flowchart TD
 
     ACTIONS --> P06
     PULSE --> P06
-    ED --> SMTP
-    SMTP --> INBOX
-    ED --> EMAIL
+    INS --> INSIGHTS
 
-    class P01,P02 phase
+    INSIGHTS --> P07
+    PDFG --> PDF
+
+    PDF --> P08
+    INSIGHTS --> P08
+    SEND --> INBOX
+    SEND --> EMAIL
+
+    EMAIL --> P09
+
+    class P01,P02,P07,P09 phase
     class P03,P04,P05,P06 llm
-    class RAW,CLEAN,THEMES,PULSE,ACTIONS,EMAIL data
+    class P08 out
+    class RAW,CLEAN,THEMES,PULSE,ACTIONS,INSIGHTS,PDF,EMAIL data
     class INBOX out
 ```
 
@@ -109,7 +126,7 @@ flowchart TD
 
 | Layer | Technology | Purpose |
 |---|---|---|
-| **Language** | Python 3.14 | All phases |
+| **Language** | Python 3.11 | All phases |
 | **Config** | PyYAML + python-dotenv | `pipeline_config.yaml` + `.env` |
 | **CLI** | `argparse` (stdlib) | `--run-label`, `--force`, `--lookback` flags |
 
@@ -134,41 +151,31 @@ flowchart TD
 | Component | Technology | Notes |
 |---|---|---|
 | **LLM Provider** | [Groq](https://groq.com) | Ultra-fast inference |
-| **Model** | `llama-3.3-70b-versatile` | Replaces deprecated `llama3-8b-8192` |
-| **Client** | `groq` Python SDK | Used in all 4 LLM phases |
+| **Model** | `llama-3.3-70b-versatile` | Replaces deprecated models |
+| **Client** | `groq` Python SDK | Used in all LLM phases |
 | **JSON enforcement** | `response_format: json_object` | Groq native structured output |
 | **Fallback parser** | `re.search` regex | Handles LLM prose wrapping JSON |
 
-### Phase 03 — Theme Extraction
-
-| Component | Technology |
-|---|---|
-| Stratified sampling | Pure Python — random + bucketing by week + rating |
-| Output | `themes.json` — 10 themes with sentiment, avg rating, quotes |
-
-### Phase 04 — Pulse Synthesis
-
-| Component | Technology |
-|---|---|
-| Health score | Pure math (weighted avg rating, sentiment penalty) — **no LLM** |
-| Narrative | 1× Groq call |
-| Output | `pulse.json` — score, label, narrative, watch list |
-
-### Phase 05 — Action Items
-
-| Component | Technology |
-|---|---|
-| Action generation | 1× Groq call — P1/P2/P3 priorities, categories, effort |
-| Output | `actions.json` — 5–8 prioritised PM actions |
-
-### Phase 06 — Email Draft & Send
+### Phase 06 — Executive Insights
 
 | Component | Technology | Notes |
 |---|---|---|
-| Executive summary | 1× Groq call | 3-sentence VP-ready paragraph |
-| HTML template | Pure Python f-strings | Inline CSS, responsive, dark header |
-| Email send | `smtplib` STARTTLS (stdlib) | Gmail App Password auth |
-| Output | `email_draft.html` + `send_receipt.json` |
+| Curation | 1× Groq call | Distills Top 3 Themes/Quotes/Actions |
+| Output | `insights.json` | Unified data for PDF and Email |
+
+### Phase 07 — PDF Generation
+
+| Component | Technology | Notes |
+|---|---|---|
+| Report Gen | `fpdf2` | High-fidelity dark-themed one-pager |
+| Layout | Rose/Slate Palette | Optimized for mobile/PM eyes |
+
+### Phase 08 — Email Dispatch
+
+| Component | Technology | Notes |
+|---|---|---|
+| Delivery | `smtplib` (Gmail App Password) | Automated weekly send |
+| Attachments | Multipart/Mixed | Attaches both PDF and HTML copy |
 
 ### Testing
 
@@ -176,7 +183,7 @@ flowchart TD
 |---|---|
 | Test runner | `pytest` |
 | Mocking | `unittest.mock.patch` |
-| Scope | 52 unit tests, fully offline — Groq & SMTP mocked |
+| Scope | End-to-end orchestration + Phase unit tests |
 
 ---
 
@@ -189,20 +196,23 @@ data/
     │   └── reviews_raw.json      ← Phase 01 output
     ├── 02-clean/
     │   ├── reviews_clean.json    ← Phase 02 output
-    │   └── reviews_clean.csv
     ├── 03-themes/
-    │   └── themes.json           ← Phase 03 output  (1 Groq call)
+    │   └── themes.json           ← Phase 03 output
     ├── 04-pulse/
-    │   └── pulse.json            ← Phase 04 output  (1 Groq call)
+    │   └── pulse.json            ← Phase 04 output
     ├── 05-actions/
-    │   └── actions.json          ← Phase 05 output  (1 Groq call)
-    └── 06-email/
-        ├── email_draft.html      ← Phase 06 output  (1 Groq call)
-        └── send_receipt.json
+    │   └── actions.json          ← Phase 05 output
+    ├── 06-insights/
+    │   └── insights.json         ← Phase 06 output (Top 3 Brain)
+    ├── 07-pdf-report/
+    │   └── Pulse_Report.pdf      ← Phase 07 output
+    ├── 08-email/
+    │   └── send_receipt.json     ← Phase 08 output
+    └── 09-storage/
+        └── (Archived files)
 ```
 
-**Total Groq calls per weekly run: 4** (one per LLM phase).  
-If a phase's output already exists, it is skipped — **zero calls**.
+**Total Groq calls per weekly run: 4** (P03, P04, P05, P06).
 
 ---
 
@@ -220,8 +230,6 @@ if output_path.exists():
 |---|---|
 | `--force` | Deletes cached output for the requested phase, forces one new API call |
 | No flag | Skips phase entirely if output exists — safe to re-run the full pipeline |
-| `--lookback N` | Phase 01 scrapes the last N weeks in one run (default: 12) |
-| `--draft-only` | Phase 06 saves HTML but skips SMTP send |
 
 ---
 
@@ -229,8 +237,8 @@ if output_path.exists():
 
 | Mode | Mechanism |
 |---|---|
-| **Weekly auto** | Cron / GitHub Actions Schedule — every Monday 08:00 UTC |
-| **Manual re-run** | `python phase_dispatcher.py --run-label 2026-W08 --force` |
+| **Weekly auto** | GitHub Actions Schedule — every Monday 08:00 AM IST |
+| **Manual re-run** | `python phase-00-orchestration/orchestrator.py --week 2026-W08 --force` |
 
 ---
 
@@ -239,20 +247,16 @@ if output_path.exists():
 | Phase | LLM? | Call count | Purpose |
 |---|---|---|---|
 | 01 — Ingestion | ❌ | 0 | Deterministic scraping |
-| 02 — Cleaning | ❌ | 0 | Rule-based dedup & normalisation |
-| 03 — Theme Extraction | ✅ | **1** | Classify 120 sampled reviews into themes |
-| 04 — Pulse Synthesis | ✅ | **1** | Write narrative pulse (score computed without LLM) |
-| 05 — Action Items | ✅ | **1** | Generate P1/P2/P3 PM actions |
-| 06 — Email Draft | ✅ | **1** | Write executive summary paragraph |
+| 02 — Cleaning | ❌ | 0 | Rule-based dedup |
+| 03 — Themes | ✅ | **1** | Classify reviews |
+| 04 — Pulse | ✅ | **1** | Write narrative |
+| 05 — Actions | ✅ | **1** | Generate prioritised tasks |
+| 06 — Insights | ✅ | **1** | Curate Top 3 for Reports |
+| 07 — PDF Report| ❌ | 0 | Formatting only |
+| 08 — Email | ❌ | 0 | SMTP Delivery |
 
 ---
 
-## 8. Future Extensions
+## 8. Dashboard
 
-| Extension | Notes |
-|---|---|
-| **Slack integration** | Push pulse summary to `#product-updates` after Phase 06 |
-| **Jira integration** | Auto-create draft tickets from Phase 05 P1 actions |
-| **Notion sync** | Archive weekly pulse into a Notion database |
-| **Streamlit dashboard** | Browse historical pulses, trend charts, rating over time |
-| **Competitor tracking** | Parallel ingestion pipeline for competitor app reviews |
+The system features an interactive **Streamlit Dashboard** that consumes historical run data (`data/history/`). Stakeholders can browse trends and deep-dive into themes through a high-fidelity dark UI.
