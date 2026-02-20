@@ -11,7 +11,7 @@ __pycache__/
 # Pipeline runtime data — weekly artifacts are version-controlled for the dashboard
 # We ignore the heavy raw/cleaned data but keep the logical summaries
 data/*/01-raw/
-data/*/02-cleaned/
+data/*/02-clean/
 !data/*/03-themes/
 !data/*/04-pulse/
 !data/*/05-actions/
