@@ -86,7 +86,7 @@ def run(week_id: str, config: dict[str, Any], logger: logging.Logger) -> None:
 
     # ── Single Groq API call ─────────────────────────────────────────────────
     llm_cfg     = config.get("llm", {})
-    model       = llm_cfg.get("model_name", "llama3-8b-8192")
+    model       = llm_cfg.get("model_name", "llama-3.3-70b-versatile")
     api_key_var = llm_cfg.get("api_key_env_var", "GROQ_API_KEY")
     api_key     = os.environ.get(api_key_var)
 
