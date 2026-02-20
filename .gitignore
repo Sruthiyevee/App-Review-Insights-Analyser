@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment files — NEVER commit secrets
+.env
+*.env
+.streamlit/secrets.toml
+
+# Pipeline runtime data — weekly artifacts are not version-controlled
+# The data/ directory itself is tracked, but its contents are excluded.
+data/*/
+!data/.gitkeep
+
+# Exception: the run registry persists run history
+!data/run_registry.json
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

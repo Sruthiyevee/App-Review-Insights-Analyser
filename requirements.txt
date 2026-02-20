@@ -1,0 +1,21 @@
+# App Review Pulse — Python Dependencies
+
+# Configuration
+PyYAML>=6.0
+
+# App Store Review Scraping (Phase 01)
+# iOS: uses Apple RSS JSON API via requests (no extra library needed)
+google-play-scraper>=1.2.4
+
+# Data processing (Phase 02)
+pandas>=2.0.0
+
+# LLM Integration (Phase 03–06)
+groq>=0.9.0
+
+# Streamlit UI (Phase 08)
+streamlit>=1.35.0
+plotly>=5.20.0
+
+# Utilities
+python-dotenv>=1.0.0

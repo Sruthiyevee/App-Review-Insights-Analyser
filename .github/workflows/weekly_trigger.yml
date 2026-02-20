@@ -1,0 +1,63 @@
+name: Weekly App Review Pulse
+
+on:
+  # Automatic trigger — every Monday at 08:00 UTC
+  schedule:
+    - cron: "0 8 * * 1"
+
+  # Manual trigger — allows specifying a week and force flag
+  workflow_dispatch:
+    inputs:
+      week_id:
+        description: "ISO week to process (e.g. 2026-W07). Leave blank for last week."
+        required: false
+        default: ""
+      force:
+        description: "Force re-run even if already processed (true/false)"
+        required: false
+        default: "false"
+
+jobs:
+  run-pipeline:
+    name: Run App Review Pulse Pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Orchestrator (Automatic)
+        if: github.event_name == 'schedule'
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python phase-00-orchestration/orchestrator.py
+
+      - name: Run Orchestrator (Manual Re-run)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.week_id }}" ]; then
+            ARGS="$ARGS --week ${{ github.event.inputs.week_id }}"
+          fi
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            ARGS="$ARGS --force"
+          fi
+          python phase-00-orchestration/orchestrator.py $ARGS
+
+      - name: Upload pipeline artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pulse-data-${{ github.run_id }}
+          path: data/
+          retention-days: 30

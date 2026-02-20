@@ -1,0 +1,53 @@
+# ============================================================
+# App Review Pulse — Pipeline Configuration
+# ============================================================
+# Copy this file to pipeline_config.yaml and fill in your values.
+# DO NOT commit API keys or secrets to version control.
+# Store secrets as environment variables; reference them here by name.
+# ============================================================
+
+# ----------------------------------------------------------
+# App Store Targets
+# ----------------------------------------------------------
+apps:
+  ios_app_id: "1450178837"           # Ind Money iOS
+  android_package_name: "in.indwealth"    # Ind Money Android
+
+# ----------------------------------------------------------
+# Target Regions / Locales
+# ----------------------------------------------------------
+regions:
+  - "us"
+  - "gb"
+  - "in"
+
+# ----------------------------------------------------------
+# LLM Configuration
+# ----------------------------------------------------------
+llm:
+  provider: "groq"                        # "groq" | "openai" | "gemini"
+  api_key_env_var: "GROQ_API_KEY"         # Name of the environment variable holding the key
+  model_name: "llama-3.3-70b-versatile"     # Groq model (llama3-8b-8192 decommissioned)
+
+# ----------------------------------------------------------
+# Scheduling
+# ----------------------------------------------------------
+scheduling:
+  weekly_day: "monday"                    # Day the cron trigger fires
+  weekly_hour_utc: 8                      # Hour in UTC (0–23)
+  lookback_weeks: 12                      # Weeks of history to ingest (8–12 recommended)
+
+# ----------------------------------------------------------
+# Storage
+# ----------------------------------------------------------
+data_root: "data"                         # Root directory for all pipeline artifacts
+
+# ----------------------------------------------------------
+# Email (Phase 06)
+# ----------------------------------------------------------
+email:
+  recipient: "sruthisv1998@gmail.com"     # Who receives the weekly pulse email
+  sender_env_var: "EMAIL_SENDER"          # Env var holding sender Gmail address
+  password_env_var: "EMAIL_APP_PASSWORD"  # Env var holding Gmail App Password
+  smtp_host: "smtp.gmail.com"
+  smtp_port: 587

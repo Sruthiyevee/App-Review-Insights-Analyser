@@ -1,0 +1,6 @@
+# This file is intentionally kept here to ensure the data/ directory
+# is tracked by git without committing actual pipeline outputs.
+#
+# All weekly pipeline artifacts (reviews, pulse, email drafts, etc.)
+# are excluded via .gitignore rules (see /data/*).
+# Only this placeholder and data/run_registry.json are version-controlled.
