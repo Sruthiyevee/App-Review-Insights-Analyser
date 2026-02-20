@@ -3,7 +3,7 @@ name: Weekly App Review Pulse
 on:
   # Automatic trigger — every Monday at 08:00 UTC
   schedule:
-    - cron: "0 8 * * 1"
+    - cron: "30 2 * * 1"
 
   # Manual trigger — allows specifying a week and force flag
   workflow_dispatch:

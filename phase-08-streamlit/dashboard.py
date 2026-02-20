@@ -5,7 +5,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import subprocess
 import sys
-import yaml
 from pathlib import Path
 from datetime import datetime
 import streamlit.components.v1 as components
@@ -13,34 +12,105 @@ import streamlit.components.v1 as components
 # Page config
 st.set_page_config(
     page_title="App Review Pulse Dashboard",
-    page_icon="📊",
+    page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for premium look
+# Premium Dark Theme CSS
 st.markdown("""
     <style>
-    .main {
-        background-color: #0f172a;
-        color: #f8fafc;
+    /* Global Background */
+    [data-testid="stAppViewContainer"] {
+        background-color: #0f1014;
     }
-    .stMetric {
-        background-color: #1e293b;
-        padding: 15px;
+    [data-testid="stHeader"] {
+        background: rgba(0,0,0,0);
+    }
+    
+    /* Sidebar styling */
+    [data-testid="stSidebar"] {
+        background-color: #16171d;
+        border-right: 1px solid #23242b;
+    }
+    
+    /* Cards */
+    .metric-card {
+        background-color: #1c1d22;
+        padding: 24px;
+        border-radius: 16px;
+        border: 1px solid #2d2e35;
+        margin-bottom: 20px;
+    }
+    .metric-value {
+        font-size: 32px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-top: 8px;
+    }
+    .metric-label {
+        font-size: 14px;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .metric-delta {
+        font-size: 14px;
+        margin-top: 4px;
+    }
+    
+    /* Activity List (Themes/Actions) */
+    .activity-row {
+        background-color: #1c1d22;
+        padding: 16px;
+        border-radius: 12px;
+        margin-bottom: 12px;
+        border: 1px solid #23242b;
+        display: flex;
+        align-items: center;
+        transition: all 0.2s ease;
+    }
+    .activity-row:hover {
+        border-color: #4f46e5;
+        background-color: #23242b;
+    }
+    .item-icon {
+        width: 40px;
+        height: 40px;
         border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 16px;
+        font-size: 18px;
+    }
+    
+    /* Typography */
+    h1, h2, h3 {
+        color: #f8fafc !important;
+        font-family: 'Inter', sans-serif;
+    }
+    p, span, li {
+        color: #cbd5e1;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f1014; }
+    ::-webkit-scrollbar-thumb { background: #2d2e35; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+    /* Buttons */
+    .stButton>button {
+        background-color: #1c1d22;
+        color: white;
         border: 1px solid #334155;
+        border-radius: 8px;
+        transition: all 0.2s;
     }
-    .stMetric label {
-        color: #94a3b8 !important;
-    }
-    .stMetric [data-testid="stMetricValue"] {
-        color: #f1f5f9 !important;
-    }
-    .status-box {
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 10px;
+    .stButton>button:hover {
+        border-color: #6366f1;
+        background-color: #23242b;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -49,7 +119,6 @@ st.markdown("""
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 HISTORY_PATH = DATA_DIR / "history" / "index.json"
-CONFIG_PATH = PROJECT_ROOT / "phase-00-orchestration" / "config" / "pipeline_config.yaml"
 
 @st.cache_data
 def load_data():
@@ -60,7 +129,6 @@ def load_data():
     return data
 
 def trigger_email_send(week_id):
-    """Triggers Phase 06 manually via subprocess."""
     try:
         cmd = [sys.executable, str(PROJECT_ROOT / "phase-06-email-draft" / "email_drafter.py"), "--run-label", week_id, "--force"]
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
@@ -69,17 +137,14 @@ def trigger_email_send(week_id):
         return False, e.stderr
 
 def main():
-    st.title("📊 App Review Pulse — Product Health Dashboard")
-    st.markdown("---")
-
-    data = load_data()
+    # --- Sidebar Setup ---
+    st.sidebar.markdown("<h2 style='color:#7c3aed; margin-bottom:20px;'>PulseDash</h2>", unsafe_allow_html=True)
     
+    data = load_data()
     if not data or not data.get("runs"):
-        st.warning("No historical data found. Please run the pipeline first.")
-        st.info("Run command: `python phase-00-orchestration/orchestrator.py --week historical-12w` (or any label)")
+        st.warning("No data found.")
         return
 
-    # Prepare DataFrame for Trends
     runs = data["runs"]
     rows = []
     for label, r in runs.items():
@@ -91,17 +156,13 @@ def main():
             "Sentiment": r.get("health_label", "Unknown"),
             "Timestamp": r.get("archived_at", "")
         })
-    df = pd.DataFrame(rows)
-    df = df.sort_values("Timestamp")
+    df = pd.DataFrame(rows).sort_values("Timestamp")
 
-    # Sidebar: Week Selection & Email Controls
-    st.sidebar.header("Navigation")
-    selected_week = st.sidebar.selectbox("Select Week", df["Week"].unique(), index=len(df)-1)
-    
-    curr = runs[selected_week]
+    st.sidebar.markdown("<p style='font-size:12px; color:#64748b; text-transform:uppercase;'>Global Controls</p>", unsafe_allow_html=True)
+    selected_week = st.sidebar.selectbox("Active Week", df["Week"].unique(), index=len(df)-1)
     
     st.sidebar.markdown("---")
-    st.sidebar.header("📨 Email Report")
+    st.sidebar.markdown("<p style='font-size:12px; color:#64748b; text-transform:uppercase;'>Automation</p>", unsafe_allow_html=True)
     
     receipt_path = DATA_DIR / selected_week / "06-email" / "send_receipt.json"
     draft_path = DATA_DIR / selected_week / "06-email" / "email_draft.html"
@@ -109,139 +170,131 @@ def main():
     if receipt_path.exists():
         with open(receipt_path, "r") as f:
             receipt = json.load(f)
-        if receipt.get("sent"):
-            st.sidebar.success(f"Last Sent: {receipt.get('timestamp', 'Unknown')}")
-            st.sidebar.caption(f"To: {receipt.get('recipient')}")
-        else:
-            st.sidebar.warning(f"Draft Only: {receipt.get('reason')}")
-    else:
-        st.sidebar.info("No email sent yet for this week.")
-
-    if st.sidebar.button("🚀 Trigger Email Report Now", use_container_width=True):
-        with st.sidebar.status("Sending email..."):
-            success, output = trigger_email_send(selected_week)
-            if success:
-                st.sidebar.success("Email dispatched successfully!")
-                st.sidebar.toast("Check your inbox!")
-                st.rerun()
-            else:
-                st.sidebar.error("Failed to send email.")
-                st.sidebar.code(output)
+        status_color = "#22c55e" if receipt.get("sent") else "#f59e0b"
+        st.sidebar.markdown(f"<div style='background:{status_color}20; border:1px solid {status_color}; padding:10px; border-radius:8px;'><span style='color:{status_color}; font-size:12px;'>● {receipt.get('timestamp', 'Recent')}</span></div>", unsafe_allow_html=True)
+    
+    if st.sidebar.button("🚀 Dispatch Report", use_container_width=True):
+        with st.sidebar.status("Sending..."):
+            success, _ = trigger_email_send(selected_week)
+            if success: st.rerun()
 
     if draft_path.exists():
-        if st.sidebar.button("👁️ View Email Draft", use_container_width=True):
+        if st.sidebar.button("👁️ Preview Report", use_container_width=True):
             st.session_state["show_preview"] = True
+
+    # --- Header ---
+    st.markdown(f"<h1>Dashboard</h1><p style='color:#64748b;'>Insights for {selected_week}</p>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # --- KPI Grid ---
+    curr = runs[selected_week]
+    kpi1, kpi2, kpi3, kpi4 = st.columns(4)
     
-    # Narrative Summary in Sidebar
-    pulse_path = DATA_DIR / selected_week / "04-pulse" / "pulse.json"
-    if pulse_path.exists():
-        with open(pulse_path, "r", encoding="utf-8") as f:
-            pulse_json = json.load(f)
-        st.sidebar.markdown("---")
-        st.sidebar.subheader("Weekly Narrative")
-        st.sidebar.info(pulse_json.get("summary", "No summary available."))
-
-    # Main Metrics
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric("Health Score", f"{curr.get('health_score')}/100", curr.get("health_label"))
-    with col2:
-        st.metric("Avg Rating", f"{curr.get('weighted_avg_rating'):.2f} ★")
-    with col3:
-        st.metric("Raw Reviews", f"{curr.get('total_raw_reviews')}")
-    with col4:
-        st.metric("Themes Found", f"{curr.get('theme_count')}")
-
-    # Email Preview Modal (Conditional)
-    if st.session_state.get("show_preview"):
-        with st.container():
-            st.markdown("### 📧 Email Draft Preview")
-            if st.button("Close Preview"):
-                st.session_state["show_preview"] = False
-                st.rerun()
-            with open(draft_path, "r", encoding="utf-8") as f:
-                html_content = f.read()
-            components.html(html_content, height=800, scrolling=True)
-            st.markdown("---")
-
-    st.markdown("---")
-
-    # Trends Visualization
-    tab1, tab2 = st.tabs(["📈 Health Trends", "📆 Timeline Data"])
+    with kpi1:
+        st.markdown(f"""<div class="metric-card">
+            <div class="metric-label">Health Score</div>
+            <div class="metric-value">{curr.get('health_score')}/100</div>
+            <div class="metric-delta" style="color:#22c55e;">{curr.get('health_label')}</div>
+        </div>""", unsafe_allow_html=True)
     
-    with tab1:
-        c1, c2 = st.columns(2)
-        with c1:
-            fig_score = px.line(df, x="Week", y="Health Score", text="Health Score",
-                              title="Health Score Trend", markers=True, 
-                              color_discrete_sequence=["#3b82f6"])
-            fig_score.update_traces(textposition="top center")
-            fig_score.update_layout(template="plotly_dark", plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
-            st.plotly_chart(fig_score, use_container_width=True)
-            
-        with c2:
-            fig_rating = px.line(df, x="Week", y="Avg Rating", text="Avg Rating",
-                               title="Average User Rating Trend", markers=True,
-                               color_discrete_sequence=["#f59e0b"])
-            fig_rating.update_traces(textposition="top center")
-            fig_rating.update_layout(template="plotly_dark", plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
-            st.plotly_chart(fig_rating, use_container_width=True)
-
-    with tab2:
-        st.dataframe(df.iloc[::-1], use_container_width=True)
-
-    st.markdown("---")
+    with kpi2:
+        st.markdown(f"""<div class="metric-card">
+            <div class="metric-label">Avg Rating</div>
+            <div class="metric-value">{curr.get('weighted_avg_rating'):.2f} ★</div>
+            <div class="metric-delta" style="color:#64748b;">Total Stars</div>
+        </div>""", unsafe_allow_html=True)
     
-    # Drill Down into Selected Week
-    st.header(f"🔍 Drill-down: {selected_week}")
-    
-    theme_path = DATA_DIR / selected_week / "03-themes" / "themes.json"
-    action_path = DATA_DIR / selected_week / "05-actions" / "actions.json"
-    
-    d_col1, d_col2 = st.columns([2, 1])
-    
-    with d_col1:
-        st.subheader("💡 Themes Legend & Voice of User")
-        if theme_path.exists():
-            with open(theme_path, "r", encoding="utf-8") as f:
-                themes_json = json.load(f)
-            
-            themes = themes_json.get("themes", [])[:5]
-            
-            # Show a Legend first
-            legend_html = "<div style='display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px;'>"
-            for t in themes:
-                color = "#ef4444" if t.get("sentiment") == "negative" else "#22c55e" if t.get("sentiment") == "positive" else "#f59e0b"
-                legend_html += f"<span style='background:{color}; color:white; padding:4px 10px; border-radius:15px; font-size:12px; font-weight:bold;'>{t.get('theme_name')}</span>"
-            legend_html += "</div>"
-            st.markdown(legend_html, unsafe_allow_html=True)
+    with kpi3:
+        st.markdown(f"""<div class="metric-card">
+            <div class="metric-label">Review Volume</div>
+            <div class="metric-value">{curr.get('total_raw_reviews'):,}</div>
+            <div class="metric-delta" style="color:#64748b;">Weekly Total</div>
+        </div>""", unsafe_allow_html=True)
+        
+    with kpi4:
+        st.markdown(f"""<div class="metric-card">
+            <div class="metric-label">Active Themes</div>
+            <div class="metric-value">{curr.get('theme_count')}</div>
+            <div class="metric-delta" style="color:#3b82f6;">Top Categories</div>
+        </div>""", unsafe_allow_html=True)
 
-            for t in themes:
-                with st.expander(f"{t.get('sentiment').upper()} | {t.get('theme_name')} ({t.get('review_count')} reviews)"):
-                    st.write(t.get("description"))
-                    st.write("**Voice of the User:**")
-                    for q in t.get("example_quotes", [])[:3]: # Also limit quotes for brevity
-                        st.markdown(f"> *\"{q}\"*")
-        else:
-            st.info("Theme data not found for this week.")
+    # --- Trends & Activity Section ---
+    col_graph, col_activity = st.columns([2, 1])
+    
+    with col_graph:
+        st.markdown("<h3 style='margin-bottom:20px;'>Pulse Trends</h3>", unsafe_allow_html=True)
+        # Styled Plotly Bar Chart
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=df["Week"], y=df["Health Score"],
+            marker_color='#6366f1', name="Health Score",
+            bordercolor="#818cf8", borderwidth=1,
+            borderpad=4
+        ))
+        fig.update_layout(
+            template="plotly_dark",
+            plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
+            margin=dict(l=0, r=0, t=10, b=10),
+            height=400,
+            xaxis=dict(showgrid=False),
+            yaxis=dict(gridcolor="#2d2e35")
+        )
+        st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
 
-    with d_col2:
-        st.subheader("🚀 Top 3 Action Plans")
+        # Mini Narrative
+        pulse_path = DATA_DIR / selected_week / "04-pulse" / "pulse.json"
+        if pulse_path.exists():
+            with open(pulse_path, "r", encoding="utf-8") as f:
+                pulse_json = json.load(f)
+            st.markdown(f"""<div class="metric-card" style="padding:20px;">
+                <h4>PM Narrative</h4>
+                <p style="font-size:14px; line-height:1.6;">{pulse_json.get('summary')}</p>
+            </div>""", unsafe_allow_html=True)
+
+    with col_activity:
+        st.markdown("<h3 style='margin-bottom:20px;'>Top Action Plans</h3>", unsafe_allow_html=True)
+        action_path = DATA_DIR / selected_week / "05-actions" / "actions.json"
         if action_path.exists():
             with open(action_path, "r", encoding="utf-8") as f:
-                actions_json = json.load(f)
-            
-            # Show ONLY Top 3 Actions (strict)
-            actions = actions_json.get("actions", [])[:3]
+                actions = json.load(f).get("actions", [])[:3]
             for a in actions:
-                priority = a.get("priority", "P3")
-                color = {"P1": "red", "P2": "orange", "P3": "blue"}.get(priority, "gray")
-                st.markdown(f"**:{color}[{priority}]** {a.get('title')}")
-                st.caption(f"Category: {a.get('category')} | Effort: {a.get('effort')}")
-                st.write(a.get("description"))
-                st.markdown("---")
+                p = a.get("priority", "P3")
+                icon_color = "#ef4444" if p == "P1" else "#f59e0b" if p == "P2" else "#3b82f6"
+                st.markdown(f"""
+                <div class="activity-row">
+                    <div class="item-icon" style="background:{icon_color}20; color:{icon_color}; font-weight:bold;">{p}</div>
+                    <div style="flex:1;">
+                        <div style="font-weight:600; font-size:14px;">{a.get('title')}</div>
+                        <div style="font-size:12px; color:#64748b;">{a.get('category')} • Effort: {a.get('effort')}</div>
+                    </div>
+                </div>""", unsafe_allow_html=True)
         else:
-            st.info("Action data not found for this week.")
+            st.caption("No actions generated yet.")
+
+        st.markdown("<br><h3 style='margin-bottom:20px;'>Themes Legend</h3>", unsafe_allow_html=True)
+        theme_path = DATA_DIR / selected_week / "03-themes" / "themes.json"
+        if theme_path.exists():
+            with open(theme_path, "r", encoding="utf-8") as f:
+                themes = json.load(f).get("themes", [])[:5]
+            for t in themes:
+                sent = t.get('sentiment')
+                sent_color = "#22c55e" if sent == "positive" else "#ef4444" if sent == "negative" else "#f59e0b"
+                st.markdown(f"""
+                <div class="activity-row" style="padding:12px;">
+                    <div style="width:10px; height:10px; border-radius:50%; background:{sent_color}; margin-right:12px;"></div>
+                    <div style="font-size:13px; font-weight:500;">{t.get('theme_name')}</div>
+                </div>""", unsafe_allow_html=True)
+
+    # --- Preview Modal ---
+    if st.session_state.get("show_preview"):
+        st.markdown("---")
+        c_p1, c_p2 = st.columns([10, 1])
+        c_p1.subheader("📧 Email Report Preview")
+        if c_p2.button("✕"):
+            st.session_state["show_preview"] = False
+            st.rerun()
+        with open(draft_path, "r", encoding="utf-8") as f:
+            components.html(f.read(), height=800, scrolling=True)
 
 if __name__ == "__main__":
     main()
