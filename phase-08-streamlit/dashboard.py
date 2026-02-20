@@ -227,9 +227,11 @@ def main():
         fig = go.Figure()
         fig.add_trace(go.Bar(
             x=df["Week"], y=df["Health Score"],
-            marker_color='#6366f1', name="Health Score",
-            bordercolor="#818cf8", borderwidth=1,
-            borderpad=4
+            marker=dict(
+                color='#6366f1',
+                line=dict(color='#818cf8', width=1)
+            ),
+            name="Health Score"
         ))
         fig.update_layout(
             template="plotly_dark",
