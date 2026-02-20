@@ -38,12 +38,16 @@ jobs:
         if: github.event_name == 'schedule'
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
         run: python phase-00-orchestration/orchestrator.py
 
       - name: Run Orchestrator (Manual Re-run)
         if: github.event_name == 'workflow_dispatch'
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
         run: |
           ARGS=""
           if [ -n "${{ github.event.inputs.week_id }}" ]; then
