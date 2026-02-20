@@ -1,0 +1,46 @@
+{
+  "week_id": "historical-12w",
+  "generated_at": "2026-02-20T17:42:01.949229+00:00",
+  "model": "llama-3.3-70b-versatile",
+  "insights": {
+    "top_themes": [
+      {
+        "name": "Customer Support Issues",
+        "sentiment": "NEGATIVE",
+        "description": "Users are facing issues with customer support, including unresponsive support and difficulty in getting help."
+      },
+      {
+        "name": "Technical Issues",
+        "sentiment": "NEGATIVE",
+        "description": "Users are experiencing technical issues with the app, including errors and difficulties with certain features."
+      },
+      {
+        "name": "Withdrawal Issues",
+        "sentiment": "NEGATIVE",
+        "description": "Users are facing issues with withdrawing their money, including difficulties with the withdrawal process and high charges."
+      }
+    ],
+    "top_quotes": [
+      "There are no process to contact customer Care Executive.",
+      "Funds deducted but MF not credited",
+      "Withdrawal process is also very difficult."
+    ],
+    "top_actions": [
+      {
+        "title": "Improve Customer Support",
+        "description": "Implement a responsive customer support system to address user concerns and issues in a timely manner.",
+        "priority": "P1"
+      },
+      {
+        "title": "Resolve Technical Issues",
+        "description": "Identify and fix technical issues such as errors, difficulties with certain features, and problems with the app's functionality to ensure a smooth user experience.",
+        "priority": "P1"
+      },
+      {
+        "title": "Address Withdrawal Issues",
+        "description": "Simplify and streamline the withdrawal process to reduce difficulties and high charges, ensuring that users can easily withdraw their money when needed.",
+        "priority": "P1"
+      }
+    ]
+  }
+}

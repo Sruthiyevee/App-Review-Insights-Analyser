@@ -1,8 +1,8 @@
 {
   "historical-12w": {
     "status": "success",
-    "started_at": "2026-02-20T16:44:25.352170+00:00",
-    "completed_at": "2026-02-20T16:44:46.094907+00:00",
+    "started_at": "2026-02-20T17:42:27.153927+00:00",
+    "completed_at": "2026-02-20T17:42:45.532693+00:00",
     "phases_completed": [
       1,
       2,
@@ -10,7 +10,9 @@
       4,
       5,
       6,
-      7
+      7,
+      8,
+      9
     ],
     "failed_at_phase": null,
     "error": null

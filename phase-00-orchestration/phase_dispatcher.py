@@ -35,8 +35,10 @@ PHASE_REGISTRY = [
     (3, "phase-03-theme-extraction.theme_extractor","run"),
     (4, "phase-04-pulse-synthesis.pulse_synthesizer","run"),
     (5, "phase-05-action-items.action_generator",  "run"),
-    (6, "phase-06-email-draft.email_drafter",      "run"),
-    (7, "phase-07-storage.history_archiver",        "run"),
+    (6, "phase-06-insights.executive_insights",    "run"),
+    (7, "phase-07-pdf-report.pdf_generator",       "run"),
+    (8, "phase-08-email.email_sender",             "run"),
+    (9, "phase-09-storage.history_archiver",        "run"),
 ]
 
 

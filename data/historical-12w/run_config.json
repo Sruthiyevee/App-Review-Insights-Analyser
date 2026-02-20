@@ -4,8 +4,18 @@
   "date_to": "2026-02-20",
   "force": true,
   "dry_run": false,
-  "llm_provider": "groq",
-  "llm_api_key_env_var": "GROQ_API_KEY",
+  "llm": {
+    "provider": "groq",
+    "api_key_env_var": "GROQ_API_KEY",
+    "model_name": "llama-3.3-70b-versatile"
+  },
+  "email": {
+    "recipient": "sruthisv1998@gmail.com",
+    "sender_env_var": "EMAIL_SENDER",
+    "password_env_var": "EMAIL_APP_PASSWORD",
+    "smtp_host": "smtp.gmail.com",
+    "smtp_port": 587
+  },
   "apps": {
     "ios_app_id": "1450178837",
     "android_package_name": "in.indwealth"

@@ -136,6 +136,7 @@ def main() -> int:
         "force": args.force,
         "dry_run": args.dry_run,
         "llm": config.get("llm", {}),
+        "email": config.get("email", {}),
         "apps": config.get("apps", {}),
         "regions": config.get("regions", []),
         "data_root": data_root,
@@ -200,4 +201,6 @@ def _extract_phase_num(error_msg: str) -> int:
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
+    from dotenv import load_dotenv
+    load_dotenv()
     sys.exit(main())
