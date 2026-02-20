@@ -280,7 +280,8 @@ def main():
                 themes = json.load(f).get("themes", [])[:5]
             for t in themes:
                 sent = t.get('sentiment')
-                sent_color = "#22c55e" if sent == "positive" else "#ef4444" if sent == "negative" else "#f59e0b"
+                # Use more refined, modern colors
+                sent_color = "#10b981" if sent == "positive" else "#f43f5e" if sent == "negative" else "#fbbf24"
                 st.markdown(f"""
                 <div class="activity-row" style="padding:12px;">
                     <div style="width:10px; height:10px; border-radius:50%; background:{sent_color}; margin-right:12px;"></div>
