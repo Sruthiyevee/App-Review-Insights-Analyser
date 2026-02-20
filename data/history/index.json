@@ -1,0 +1,34 @@
+{
+  "runs": {
+    "historical-12w": {
+      "run_label": "historical-12w",
+      "archived_at": "2026-02-20T16:44:46.008447+00:00",
+      "phases_complete": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "total_raw_reviews": 4156,
+      "total_clean_reviews": 1466,
+      "theme_count": 10,
+      "health_score": 74,
+      "health_label": "Stable",
+      "weighted_avg_rating": 3.7,
+      "action_count": 7,
+      "email_sent": true,
+      "email_recipient": "sruthisv1998@gmail.com",
+      "artifacts": {
+        "raw": "historical-12w\\01-raw\\reviews_raw.json",
+        "clean": "historical-12w\\02-clean\\reviews_clean.json",
+        "themes": "historical-12w\\03-themes\\themes.json",
+        "pulse": "historical-12w\\04-pulse\\pulse.json",
+        "actions": "historical-12w\\05-actions\\actions.json",
+        "email": "historical-12w\\06-email\\send_receipt.json"
+      }
+    }
+  },
+  "updated_at": "2026-02-20T16:44:46.082964+00:00"
+}

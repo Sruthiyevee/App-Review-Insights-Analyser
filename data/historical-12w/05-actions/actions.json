@@ -1,0 +1,73 @@
+{
+  "week_id": "historical-12w",
+  "generated_at": "2026-02-20T15:48:27.899395+00:00",
+  "model": "llama-3.3-70b-versatile",
+  "health_score": 74,
+  "health_label": "Stable",
+  "action_count": 7,
+  "actions": [
+    {
+      "priority": "P1",
+      "category": "Support",
+      "title": "Improve Customer Support",
+      "description": "Implement a responsive customer support system to address user concerns and issues in a timely manner. This includes providing a clear process for contacting customer care executives and ensuring that support requests are handled efficiently.",
+      "theme_source": "Customer Support Issues",
+      "effort": "High",
+      "expected_impact": "Users will experience a significant reduction in frustration and an increase in satisfaction due to timely and effective support."
+    },
+    {
+      "priority": "P1",
+      "category": "Bug Fix",
+      "title": "Resolve Technical Issues",
+      "description": "Identify and fix technical issues such as errors, difficulties with certain features, and problems with the app's functionality to ensure a smooth user experience. This includes resolving issues like 'scan and pay not working' and 'funds deducted but MF not credited'.",
+      "theme_source": "Technical Issues",
+      "effort": "Medium",
+      "expected_impact": "Users will experience fewer errors and difficulties, leading to increased trust and satisfaction with the app."
+    },
+    {
+      "priority": "P1",
+      "category": "Trust & Safety",
+      "title": "Address Withdrawal Issues",
+      "description": "Simplify and streamline the withdrawal process to reduce difficulties and high charges, ensuring that users can easily withdraw their money when needed. This includes addressing issues like 'withdrawal process is difficult' and 'high charges for withdrawal'.",
+      "theme_source": "Withdrawal Issues",
+      "effort": "Medium",
+      "expected_impact": "Users will have increased confidence in the app's ability to manage their finances securely and efficiently."
+    },
+    {
+      "priority": "P2",
+      "category": "UX",
+      "title": "Enhance App Interface",
+      "description": "Implement user feedback to improve the app's interface, making it more intuitive, easy to learn, and visually appealing. This includes addressing issues like 'font size is too large' and 'interface is cluttered'.",
+      "theme_source": "App Interface",
+      "effort": "Medium",
+      "expected_impact": "Users will experience an improved overall user experience, leading to increased engagement and satisfaction with the app."
+    },
+    {
+      "priority": "P2",
+      "category": "Trust & Safety",
+      "title": "Address Security Concerns",
+      "description": "Implement additional security measures to protect user data and investments, addressing concerns about the app's safety and security. This includes providing clear information about data protection and investment safety.",
+      "theme_source": "Security Concerns",
+      "effort": "High",
+      "expected_impact": "Users will have increased confidence in the app's ability to protect their personal and financial information."
+    },
+    {
+      "priority": "P3",
+      "category": "Feature",
+      "title": "Add New Investment Features",
+      "description": "Consider adding new features such as digital asset investment tracking, candle charts, and volume charts to enhance the app's investment capabilities and provide more value to users.",
+      "theme_source": "Suggestions for Improvement",
+      "effort": "High",
+      "expected_impact": "Users will have access to more advanced investment tools and features, leading to increased satisfaction and engagement with the app."
+    },
+    {
+      "priority": "P3",
+      "category": "UX",
+      "title": "Improve User Education",
+      "description": "Expand the app's educational resources to provide more information and learning opportunities for users, helping them make informed investment decisions and improve their financial literacy.",
+      "theme_source": "User Education",
+      "effort": "Medium",
+      "expected_impact": "Users will have increased knowledge and confidence in their investment decisions, leading to a more positive overall experience with the app."
+    }
+  ]
+}

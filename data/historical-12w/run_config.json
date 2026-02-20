@@ -1,0 +1,19 @@
+{
+  "week_id": "historical-12w",
+  "date_from": "2025-11-22",
+  "date_to": "2026-02-20",
+  "force": true,
+  "dry_run": false,
+  "llm_provider": "groq",
+  "llm_api_key_env_var": "GROQ_API_KEY",
+  "apps": {
+    "ios_app_id": "1450178837",
+    "android_package_name": "in.indwealth"
+  },
+  "regions": [
+    "us",
+    "gb",
+    "in"
+  ],
+  "data_root": "data"
+}

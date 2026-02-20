@@ -1,0 +1,250 @@
+2026-02-20T21:51:01 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:51:01 | INFO     | pulse.historical-12w | App Review Pulse — Orchestrator
+2026-02-20T21:51:01 | INFO     | pulse.historical-12w | Target Week  : historical-12w
+2026-02-20T21:51:01 | INFO     | pulse.historical-12w | Date Range   : 2025-11-22 → 2026-02-20
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | Force Re-run : False
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | Dry Run      : False
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | Run config written → data\historical-12w\run_config.json
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | ▶  Starting Phase 01 ...
+2026-02-20T21:51:02 | WARNING  | pulse.historical-12w |    Phase 01 not yet implemented (stub). Skipping. [Phase 01 module 'phase_01_ingestion.ingestor' not found. Implementation stub expected.]
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | ▶  Starting Phase 02 ...
+2026-02-20T21:51:02 | WARNING  | pulse.historical-12w |    Phase 02 not yet implemented (stub). Skipping. [Phase 02 module 'phase_02_cleaning.cleaner' not found. Implementation stub expected.]
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | ▶  Starting Phase 03 ...
+2026-02-20T21:51:02 | WARNING  | pulse.historical-12w |    Phase 03 not yet implemented (stub). Skipping. [Phase 03 module 'phase_03_theme_extraction.theme_extractor' not found. Implementation stub expected.]
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | ▶  Starting Phase 04 ...
+2026-02-20T21:51:02 | WARNING  | pulse.historical-12w |    Phase 04 not yet implemented (stub). Skipping. [Phase 04 module 'phase_04_pulse_synthesis.pulse_synthesizer' not found. Implementation stub expected.]
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | ▶  Starting Phase 05 ...
+2026-02-20T21:51:02 | WARNING  | pulse.historical-12w |    Phase 05 not yet implemented (stub). Skipping. [Phase 05 module 'phase_05_action_items.action_generator' not found. Implementation stub expected.]
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | ▶  Starting Phase 06 ...
+2026-02-20T21:51:02 | WARNING  | pulse.historical-12w |    Phase 06 not yet implemented (stub). Skipping. [Phase 06 module 'phase_06_email_draft.email_drafter' not found. Implementation stub expected.]
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | ▶  Starting Phase 07 ...
+2026-02-20T21:51:02 | WARNING  | pulse.historical-12w |    Phase 07 not yet implemented (stub). Skipping. [Phase 07 module 'phase_07_storage.history_archiver' not found. Implementation stub expected.]
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | Pipeline complete for historical-12w. Phases finished: [1, 2, 3, 4, 5, 6, 7]
+2026-02-20T21:51:02 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:51:33 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:51:33 | INFO     | pulse.historical-12w | App Review Pulse — Orchestrator
+2026-02-20T21:51:33 | INFO     | pulse.historical-12w | Target Week  : historical-12w
+2026-02-20T21:51:33 | INFO     | pulse.historical-12w | Date Range   : 2025-11-22 → 2026-02-20
+2026-02-20T21:51:33 | INFO     | pulse.historical-12w | Force Re-run : False
+2026-02-20T21:51:33 | INFO     | pulse.historical-12w | Dry Run      : False
+2026-02-20T21:51:33 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:51:33 | INFO     | pulse.historical-12w | Week historical-12w has already been successfully processed. Use --force to re-run.
+2026-02-20T21:52:12 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:52:12 | INFO     | pulse.historical-12w | App Review Pulse — Orchestrator
+2026-02-20T21:52:12 | INFO     | pulse.historical-12w | Target Week  : historical-12w
+2026-02-20T21:52:12 | INFO     | pulse.historical-12w | Date Range   : 2025-11-22 -> 2026-02-20
+2026-02-20T21:52:12 | INFO     | pulse.historical-12w | Force Re-run : True
+2026-02-20T21:52:12 | INFO     | pulse.historical-12w | Dry Run      : False
+2026-02-20T21:52:12 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:52:12 | INFO     | pulse.historical-12w | Run config written → data\historical-12w\run_config.json
+2026-02-20T21:52:12 | INFO     | pulse.historical-12w | [*] Starting Phase 01 ...
+2026-02-20T21:52:12 | ERROR    | pulse.historical-12w | [X] Phase 01 FAILED after 0.0s: name '_PROJECT_ROOT' is not defined
+2026-02-20T21:52:12 | ERROR    | pulse.historical-12w | Pipeline aborted: Phase 01 failed: name '_PROJECT_ROOT' is not defined
+2026-02-20T21:52:39 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:52:39 | INFO     | pulse.historical-12w | App Review Pulse — Orchestrator
+2026-02-20T21:52:39 | INFO     | pulse.historical-12w | Target Week  : historical-12w
+2026-02-20T21:52:39 | INFO     | pulse.historical-12w | Date Range   : 2025-11-22 -> 2026-02-20
+2026-02-20T21:52:39 | INFO     | pulse.historical-12w | Force Re-run : True
+2026-02-20T21:52:39 | INFO     | pulse.historical-12w | Dry Run      : False
+2026-02-20T21:52:39 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:52:39 | INFO     | pulse.historical-12w | Run config written -> data\historical-12w\run_config.json
+2026-02-20T21:52:39 | INFO     | pulse.historical-12w | [*] Starting Phase 01 ...
+2026-02-20T21:52:39 | ERROR    | pulse.historical-12w | [X] Phase 01 FAILED after 0.0s: name 'sys' is not defined
+2026-02-20T21:52:39 | ERROR    | pulse.historical-12w | Pipeline aborted: Phase 01 failed: name 'sys' is not defined
+2026-02-20T21:53:06 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:53:06 | INFO     | pulse.historical-12w | App Review Pulse — Orchestrator
+2026-02-20T21:53:06 | INFO     | pulse.historical-12w | Target Week  : historical-12w
+2026-02-20T21:53:06 | INFO     | pulse.historical-12w | Date Range   : 2025-11-22 -> 2026-02-20
+2026-02-20T21:53:06 | INFO     | pulse.historical-12w | Force Re-run : True
+2026-02-20T21:53:06 | INFO     | pulse.historical-12w | Dry Run      : False
+2026-02-20T21:53:06 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:53:06 | INFO     | pulse.historical-12w | Run config written -> data\historical-12w\run_config.json
+2026-02-20T21:53:06 | INFO     | pulse.historical-12w | [*] Starting Phase 01 ...
+2026-02-20T21:53:07 | INFO     | pulse.historical-12w | Phase 01 — Review Ingestion: starting.
+2026-02-20T21:53:07 | INFO     | pulse.historical-12w |   Date range  : 2025-11-22 → 2026-02-20
+2026-02-20T21:53:07 | INFO     | pulse.historical-12w |   iOS App ID  : 1450178837
+2026-02-20T21:53:07 | INFO     | pulse.historical-12w |   Android Pkg : in.indwealth
+2026-02-20T21:53:07 | INFO     | pulse.historical-12w |   Regions     : ['us', 'gb', 'in']
+2026-02-20T21:53:07 | INFO     | pulse.historical-12w |   [iOS] Fetching reviews — region=us ...
+2026-02-20T21:53:07 | INFO     | pulse.historical-12w |   [Android] Fetching reviews for region=us ...
+2026-02-20T21:53:07 | INFO     | pulse.historical-12w |   [iOS] us: 0 reviews in window.
+2026-02-20T21:53:07 | INFO     | pulse.historical-12w |   [iOS] Fetching reviews — region=gb ...
+2026-02-20T21:53:08 | INFO     | pulse.historical-12w |   [iOS] gb: 0 reviews in window.
+2026-02-20T21:53:08 | INFO     | pulse.historical-12w |   [iOS] Fetching reviews — region=in ...
+2026-02-20T21:53:11 | INFO     | pulse.historical-12w |   [iOS] in: 121 reviews in window.
+2026-02-20T21:53:13 | INFO     | pulse.historical-12w |   [Android] us: 1344 reviews in window.
+2026-02-20T21:53:13 | INFO     | pulse.historical-12w |   [Android] Fetching reviews for region=gb ...
+2026-02-20T21:53:18 | INFO     | pulse.historical-12w |   [Android] gb: 1344 reviews in window.
+2026-02-20T21:53:18 | INFO     | pulse.historical-12w |   [Android] Fetching reviews for region=in ...
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   [Android] in: 1344 reviews in window.
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   Total reviews fetched: 4153 (iOS=121, Android=4032)
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   Raw reviews written → data\historical-12w\01-raw\reviews_raw.json
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   Ingestion summary written → data\historical-12w\01-raw\ingestion_summary.json
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | Phase 01 — Review Ingestion: complete in 17.2s.
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [OK] Phase 01 completed in 17.3s
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [*] Starting Phase 02 ...
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | Phase 02 — Data Cleaning: starting.
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   Loaded 4153 raw reviews from data\historical-12w\01-raw\reviews_raw.json
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   Clean reviews written → data\historical-12w\02-clean\reviews_clean.json  (1465 records)
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   Clean reviews CSV written → data\historical-12w\02-clean\reviews_clean.csv
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   Cleaning summary written → data\historical-12w\02-clean\cleaning_summary.json
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | Phase 02 — Data Cleaning: complete in 0.1s. (4153 in → 1465 out, 2688 dropped)
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [OK] Phase 02 completed in 0.1s
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [*] Starting Phase 03 ...
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | Phase 03 — Theme Extraction: starting.
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   themes.json already exists — skipping API call. (data\historical-12w\03-themes\themes.json)
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [OK] Phase 03 completed in 0.0s
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [*] Starting Phase 04 ...
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | Phase 04 — Pulse Synthesis: starting.
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   pulse.json already exists — skipping API call. (data\historical-12w\04-pulse\pulse.json)
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [OK] Phase 04 completed in 0.0s
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [*] Starting Phase 05 ...
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | Phase 05 — Action Items: starting.
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   actions.json already exists — skipping API call. (data\historical-12w\05-actions\actions.json)
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [OK] Phase 05 completed in 0.0s
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [*] Starting Phase 06 ...
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | Phase 06 — Email Draft & Send: starting.
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   send_receipt.json exists — skipping. (data\historical-12w\06-email\send_receipt.json)
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [OK] Phase 06 completed in 0.0s
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [*] Starting Phase 07 ...
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | Phase 07 — Storage & History Registry: starting.
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   Phases complete for 'historical-12w': ['01', '02', '03', '04', '05', '06']
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   index.json updated → data\history\index.json  (1 runs total)
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w |   latest.json updated → data\history\latest.json
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | Phase 07 — Storage & History Registry: complete in 0.1s.
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | [OK] Phase 07 completed in 0.2s
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | Pipeline complete for historical-12w. Phases finished: [1, 2, 3, 4, 5, 6, 7]
+2026-02-20T21:53:24 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w | App Review Pulse — Orchestrator
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w | Target Week  : historical-12w
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w | Date Range   : 2025-11-22 -> 2026-02-20
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w | Force Re-run : True
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w | Dry Run      : False
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w | Run config written -> data\historical-12w\run_config.json
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w | [*] Starting Phase 01 ...
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w | Phase 01 — Review Ingestion: starting.
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w |   Date range  : 2025-11-22 -> 2026-02-20
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w |   iOS App ID  : 1450178837
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w |   Android Pkg : in.indwealth
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w |   Regions     : ['us', 'gb', 'in']
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w |   [iOS] Fetching reviews — region=us ...
+2026-02-20T21:59:13 | INFO     | pulse.historical-12w |   [Android] Fetching reviews for region=us ...
+2026-02-20T21:59:15 | INFO     | pulse.historical-12w |   [iOS] us: 0 reviews in window.
+2026-02-20T21:59:15 | INFO     | pulse.historical-12w |   [iOS] Fetching reviews — region=gb ...
+2026-02-20T21:59:16 | INFO     | pulse.historical-12w |   [iOS] gb: 0 reviews in window.
+2026-02-20T21:59:16 | INFO     | pulse.historical-12w |   [iOS] Fetching reviews — region=in ...
+2026-02-20T21:59:19 | INFO     | pulse.historical-12w |   [iOS] in: 121 reviews in window.
+2026-02-20T21:59:20 | INFO     | pulse.historical-12w |   [Android] us: 1345 reviews in window.
+2026-02-20T21:59:20 | INFO     | pulse.historical-12w |   [Android] Fetching reviews for region=gb ...
+2026-02-20T21:59:25 | INFO     | pulse.historical-12w |   [Android] gb: 1344 reviews in window.
+2026-02-20T21:59:25 | INFO     | pulse.historical-12w |   [Android] Fetching reviews for region=in ...
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   [Android] in: 1344 reviews in window.
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   Total reviews fetched: 4154 (iOS=121, Android=4033)
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   Raw reviews written → data\historical-12w\01-raw\reviews_raw.json
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   Ingestion summary written → data\historical-12w\01-raw\ingestion_summary.json
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | Phase 01 — Review Ingestion: complete in 17.5s.
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [OK] Phase 01 completed in 17.6s
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [*] Starting Phase 02 ...
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | Phase 02 — Data Cleaning: starting.
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   Loaded 4154 raw reviews from data\historical-12w\01-raw\reviews_raw.json
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   Clean reviews written → data\historical-12w\02-clean\reviews_clean.json  (1466 records)
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   Clean reviews CSV written → data\historical-12w\02-clean\reviews_clean.csv
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   Cleaning summary written → data\historical-12w\02-clean\cleaning_summary.json
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | Phase 02 — Data Cleaning: complete in 0.1s. (4154 in → 1466 out, 2688 dropped)
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [OK] Phase 02 completed in 0.1s
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [*] Starting Phase 03 ...
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | Phase 03 — Theme Extraction: starting.
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   themes.json already exists — skipping API call. (data\historical-12w\03-themes\themes.json)
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [OK] Phase 03 completed in 0.0s
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [*] Starting Phase 04 ...
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | Phase 04 — Pulse Synthesis: starting.
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   pulse.json already exists — skipping API call. (data\historical-12w\04-pulse\pulse.json)
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [OK] Phase 04 completed in 0.0s
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [*] Starting Phase 05 ...
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | Phase 05 — Action Items: starting.
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   actions.json already exists — skipping API call. (data\historical-12w\05-actions\actions.json)
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [OK] Phase 05 completed in 0.0s
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [*] Starting Phase 06 ...
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | Phase 06 — Email Draft & Send: starting.
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   send_receipt.json exists — skipping. (data\historical-12w\06-email\send_receipt.json)
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [OK] Phase 06 completed in 0.0s
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [*] Starting Phase 07 ...
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | Phase 07 — Storage & History Registry: starting.
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   Phases complete for 'historical-12w': ['01', '02', '03', '04', '05', '06']
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   index.json updated → data\history\index.json  (1 runs total)
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w |   latest.json updated → data\history\latest.json
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | Phase 07 — Storage & History Registry: complete in 0.1s.
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | [OK] Phase 07 completed in 0.1s
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | Pipeline complete for historical-12w. Phases finished: [1, 2, 3, 4, 5, 6, 7]
+2026-02-20T21:59:31 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w | App Review Pulse — Orchestrator
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w | Target Week  : historical-12w
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w | Date Range   : 2025-11-22 -> 2026-02-20
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w | Force Re-run : True
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w | Dry Run      : False
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w | Run config written -> data\historical-12w\run_config.json
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w | [*] Starting Phase 01 ...
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w | Phase 01 — Review Ingestion: starting.
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w |   Date range  : 2025-11-22 -> 2026-02-20
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w |   iOS App ID  : 1450178837
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w |   Android Pkg : in.indwealth
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w |   Regions     : ['us', 'gb', 'in']
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w |   [iOS] Fetching reviews — region=us ...
+2026-02-20T22:14:25 | INFO     | pulse.historical-12w |   [Android] Fetching reviews for region=us ...
+2026-02-20T22:14:27 | INFO     | pulse.historical-12w |   [iOS] us: 0 reviews in window.
+2026-02-20T22:14:27 | INFO     | pulse.historical-12w |   [iOS] Fetching reviews — region=gb ...
+2026-02-20T22:14:28 | INFO     | pulse.historical-12w |   [iOS] gb: 0 reviews in window.
+2026-02-20T22:14:28 | INFO     | pulse.historical-12w |   [iOS] Fetching reviews — region=in ...
+2026-02-20T22:14:30 | INFO     | pulse.historical-12w |   [iOS] in: 121 reviews in window.
+2026-02-20T22:14:32 | INFO     | pulse.historical-12w |   [Android] us: 1345 reviews in window.
+2026-02-20T22:14:32 | INFO     | pulse.historical-12w |   [Android] Fetching reviews for region=gb ...
+2026-02-20T22:14:39 | INFO     | pulse.historical-12w |   [Android] gb: 1345 reviews in window.
+2026-02-20T22:14:39 | INFO     | pulse.historical-12w |   [Android] Fetching reviews for region=in ...
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   [Android] in: 1345 reviews in window.
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   Total reviews fetched: 4156 (iOS=121, Android=4035)
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   Raw reviews written → data\historical-12w\01-raw\reviews_raw.json
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   Ingestion summary written → data\historical-12w\01-raw\ingestion_summary.json
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | Phase 01 — Review Ingestion: complete in 20.4s.
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | [OK] Phase 01 completed in 20.6s
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | [*] Starting Phase 02 ...
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | Phase 02 — Data Cleaning: starting.
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   Loaded 4156 raw reviews from data\historical-12w\01-raw\reviews_raw.json
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   Clean reviews written → data\historical-12w\02-clean\reviews_clean.json  (1466 records)
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   Clean reviews CSV written → data\historical-12w\02-clean\reviews_clean.csv
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   Cleaning summary written → data\historical-12w\02-clean\cleaning_summary.json
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | Phase 02 — Data Cleaning: complete in 0.1s. (4156 in → 1466 out, 2690 dropped)
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | [OK] Phase 02 completed in 0.1s
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | [*] Starting Phase 03 ...
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | Phase 03 — Theme Extraction: starting.
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   themes.json already exists — skipping API call. (data\historical-12w\03-themes\themes.json)
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | [OK] Phase 03 completed in 0.0s
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | [*] Starting Phase 04 ...
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | Phase 04 — Pulse Synthesis: starting.
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   pulse.json already exists — skipping API call. (data\historical-12w\04-pulse\pulse.json)
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | [OK] Phase 04 completed in 0.0s
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | [*] Starting Phase 05 ...
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | Phase 05 — Action Items: starting.
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w |   actions.json already exists — skipping API call. (data\historical-12w\05-actions\actions.json)
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | [OK] Phase 05 completed in 0.0s
+2026-02-20T22:14:45 | INFO     | pulse.historical-12w | [*] Starting Phase 06 ...
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w | Phase 06 — Email Draft & Send: starting.
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w |   send_receipt.json exists — skipping. (data\historical-12w\06-email\send_receipt.json)
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w | [OK] Phase 06 completed in 0.0s
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w | [*] Starting Phase 07 ...
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w | Phase 07 — Storage & History Registry: starting.
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w |   Phases complete for 'historical-12w': ['01', '02', '03', '04', '05', '06']
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w |   index.json updated → data\history\index.json  (1 runs total)
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w |   latest.json updated → data\history\latest.json
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w | Phase 07 — Storage & History Registry: complete in 0.1s.
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w | [OK] Phase 07 completed in 0.1s
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w | ============================================================
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w | Pipeline complete for historical-12w. Phases finished: [1, 2, 3, 4, 5, 6, 7]
+2026-02-20T22:14:46 | INFO     | pulse.historical-12w | ============================================================

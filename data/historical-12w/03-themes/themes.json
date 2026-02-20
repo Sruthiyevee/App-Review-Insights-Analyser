@@ -1,0 +1,129 @@
+{
+  "week_id": "historical-12w",
+  "extracted_at": "2026-02-20T15:01:56.850631+00:00",
+  "model": "llama-3.3-70b-versatile",
+  "reviews_in_prompt": 120,
+  "total_reviews": 1387,
+  "themes": [
+    {
+      "theme_name": "Good Experience",
+      "description": "Users are having a good experience with the app, finding it easy to use and navigate.",
+      "sentiment": "positive",
+      "review_count": 63,
+      "avg_rating": 4.5,
+      "example_quotes": [
+        "Good App.",
+        "SUPER APP TO INVEST STOCKS",
+        "very good"
+      ]
+    },
+    {
+      "theme_name": "Customer Support Issues",
+      "description": "Users are facing issues with customer support, including unresponsive support and difficulty in getting help.",
+      "sentiment": "negative",
+      "review_count": 13,
+      "avg_rating": 1.8,
+      "example_quotes": [
+        "There are no process to contact customer Care Executive.",
+        "Very slow customer support.",
+        "where is your customer number regarding personal loan."
+      ]
+    },
+    {
+      "theme_name": "App Interface",
+      "description": "Users are providing feedback on the app's interface, including suggestions for improvement and issues with the current design.",
+      "sentiment": "mixed",
+      "review_count": 12,
+      "avg_rating": 3.5,
+      "example_quotes": [
+        "The font size is too large, which makes the screen look cluttered and uncomfortable to view.",
+        "please make interface easy to learn",
+        "interface so bad"
+      ]
+    },
+    {
+      "theme_name": "Investment Features",
+      "description": "Users are discussing the app's investment features, including the ability to track investments and make informed decisions.",
+      "sentiment": "positive",
+      "review_count": 11,
+      "avg_rating": 4.3,
+      "example_quotes": [
+        "This is one of the most insightful stock apps I’ve used.",
+        "Investment is easy in the US and Indian market",
+        "Best for US investment and Indian Equity"
+      ]
+    },
+    {
+      "theme_name": "Technical Issues",
+      "description": "Users are experiencing technical issues with the app, including errors and difficulties with certain features.",
+      "sentiment": "negative",
+      "review_count": 9,
+      "avg_rating": 2.1,
+      "example_quotes": [
+        "scan and pay is not working",
+        "Funds deducted but MF not credited",
+        "App is not able to fetch credit card bill amount."
+      ]
+    },
+    {
+      "theme_name": "Withdrawal Issues",
+      "description": "Users are facing issues with withdrawing their money, including difficulties with the withdrawal process and high charges.",
+      "sentiment": "negative",
+      "review_count": 6,
+      "avg_rating": 1.8,
+      "example_quotes": [
+        "Withdrawal process is also very difficult.",
+        "I want to withdraw my money from my account but it's showing sbm account is not supporting",
+        "it would be better if it would partner up with any other banks than federal Bank."
+      ]
+    },
+    {
+      "theme_name": "Suggestions for Improvement",
+      "description": "Users are providing suggestions for improving the app, including adding new features and improving existing ones.",
+      "sentiment": "mixed",
+      "review_count": 6,
+      "avg_rating": 3.8,
+      "example_quotes": [
+        "add an option to track digital asset investment",
+        "It needs more customization like candle charts, volume chart",
+        "please bring back the price movement feature"
+      ]
+    },
+    {
+      "theme_name": "Comparison with Other Apps",
+      "description": "Users are comparing the app with other similar apps, including discussions of the app's strengths and weaknesses.",
+      "sentiment": "mixed",
+      "review_count": 5,
+      "avg_rating": 3.4,
+      "example_quotes": [
+        "INDmoney can be number 1 in India only after starting customer care number and reducing charges",
+        "Keep other apps as your options too like Vested",
+        "Best for US investment and Indian Equity Like Mf,Stock, Ipo"
+      ]
+    },
+    {
+      "theme_name": "Security Concerns",
+      "description": "Users are expressing concerns about the app's security, including issues with data protection and the safety of their investments.",
+      "sentiment": "negative",
+      "review_count": 4,
+      "avg_rating": 2.0,
+      "example_quotes": [
+        "i am kind of scared what happens, if Ind Money goes down.",
+        "WORST! app ever Maine Paisa jma kiye the ind stock wallet me share purchase krne ke baad same amount negative show ho rha wallet me",
+        "without information mtf money block and my order square off"
+      ]
+    },
+    {
+      "theme_name": "User Education",
+      "description": "Users are discussing the app's educational resources, including the availability of information and the app's ability to help users learn about investing.",
+      "sentiment": "positive",
+      "review_count": 4,
+      "avg_rating": 4.5,
+      "example_quotes": [
+        "I got an opportunity to learn finance through INDmoney",
+        "The data and analysis are very helpful for making informed decisions.",
+        "One stop solution."
+      ]
+    }
+  ]
+}

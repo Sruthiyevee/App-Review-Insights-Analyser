@@ -1,0 +1,25 @@
+{
+  "week_id": "historical-12w",
+  "generated_at": "2026-02-20T15:41:09.747044+00:00",
+  "model": "llama-3.3-70b-versatile",
+  "health_score": 74,
+  "health_label": "Stable",
+  "weighted_avg_rating": 3.7,
+  "total_reviews": 133,
+  "summary": "The app's health score remains stable at 74/100, with a weighted average rating of 3.7/5.0 based on 133 reviews. Users are generally having a good experience with the app, but are facing issues with customer support and technical problems. Investment features and user education are notable strengths.",
+  "top_positives": [
+    "Good Experience",
+    "Investment Features",
+    "User Education"
+  ],
+  "top_negatives": [
+    "Customer Support Issues",
+    "Technical Issues",
+    "Withdrawal Issues"
+  ],
+  "watch_list": [
+    "App Interface",
+    "Security Concerns"
+  ],
+  "pm_note": "The PM team should prioritize resolving customer support issues and technical problems to improve the overall user experience and increase the app's health score."
+}

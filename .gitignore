@@ -8,9 +8,15 @@ __pycache__/
 *.env
 .streamlit/secrets.toml
 
-# Pipeline runtime data — weekly artifacts are not version-controlled
-# The data/ directory itself is tracked, but its contents are excluded.
-data/*/
+# Pipeline runtime data — weekly artifacts are version-controlled for the dashboard
+# We ignore the heavy raw/cleaned data but keep the logical summaries
+data/*/01-raw/
+data/*/02-cleaned/
+!data/*/03-themes/
+!data/*/04-pulse/
+!data/*/05-actions/
+!data/*/06-email/
+!data/history/
 !data/.gitkeep
 
 # Exception: the run registry persists run history
